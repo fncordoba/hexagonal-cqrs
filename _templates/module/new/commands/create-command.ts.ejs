@@ -1,0 +1,15 @@
+---
+to: src/modules/<%= moduleName.toLowerCase() %>/commands/handlers/create-<%= moduleName.toLowerCase() %>.handler.ts
+---
+
+import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { Create<%= moduleName %>Command } from '../create-<%= moduleName.toLowerCase() %>.command';
+
+@CommandHandler(Create<%= moduleName %>Command)
+export class Create<%= moduleName %>Handler implements ICommandHandler<Create<%= moduleName %>Command> {
+  async execute(command: Create<%= moduleName %>Command): Promise<void> {
+    const { data } = command;
+    console.log('Creating <%= moduleName %>', data);
+    // Lógica para crear un <%= moduleName %>
+  }
+}

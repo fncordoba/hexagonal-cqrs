@@ -1,0 +1,14 @@
+---
+to: src/modules/<%= moduleName.toLowerCase() %>/events/handlers/<%= moduleName.toLowerCase() %>-created.handler.ts
+---
+
+import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
+import { <%= moduleName %>CreatedEvent } from '../<%= moduleName.toLowerCase() %>-created.event';
+
+@EventsHandler(<%= moduleName %>CreatedEvent)
+export class <%= moduleName %>CreatedHandler implements IEventHandler<<%= moduleName %>CreatedEvent> {
+  handle(event: <%= moduleName %>CreatedEvent): void {
+    console.log('<%= moduleName %> Created Event:', event);
+    // Lógica para manejar el evento
+  }
+}

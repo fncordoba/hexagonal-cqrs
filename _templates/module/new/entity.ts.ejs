@@ -1,0 +1,17 @@
+---
+to: src/modules/<%= moduleName.toLowerCase() %>/schemas/<%= moduleName.toLowerCase() %>.entity.ts
+---
+
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+
+@Entity('<%= moduleName.toLowerCase() %>')
+export class <%= moduleName %>Entity {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name: string;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+}

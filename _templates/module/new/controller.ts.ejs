@@ -1,0 +1,20 @@
+---
+to: src/modules/<%= moduleName.toLowerCase() %>/infrastructure/<%= moduleName.toLowerCase() %>.controller.ts
+---
+
+import { Controller, Post, Get } from '@nestjs/common';
+
+@Controller('<%= moduleName.toLowerCase() %>')
+export class <%= moduleName %>Controller {
+  @Post()
+  async create() {
+    // Lógica para crear
+    return 'Create <%= moduleName %>';
+  }
+
+  @Get()
+  async findAll() {
+    // Lógica para listar
+    return 'Get all <%= moduleName %>';
+  }
+}

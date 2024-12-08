@@ -1,0 +1,31 @@
+---
+to: src/modules/<%= moduleName.toLowerCase() %>/<%= moduleName.toLowerCase() %>.module.ts
+---
+
+import { Module } from '@nestjs/common';
+import { CqrsModule } from '@nestjs/cqrs';
+import { MongooseModule } from '@nestjs/mongoose';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { <%= moduleName %>Controller } from './infrastructure/<%= moduleName.toLowerCase() %>.controller';
+import { <%= moduleName %>Entity } from './schemas/<%= moduleName.toLowerCase() %>.entity';
+import { <%= moduleName %>Schema } from './schemas/<%= moduleName.toLowerCase() %>.schema';
+
+import { Create<%= moduleName %>Handler } from './commands/handlers/create-<%= moduleName.toLowerCase() %>.handler';
+import { Get<%= moduleName %>Handler } from './queries/handlers/get-<%= moduleName.toLowerCase() %>.handler';
+import { <%= moduleName %>CreatedHandler } from './events/handlers/<%= moduleName.toLowerCase() %>-created.handler';
+
+@Module({
+  imports: [
+    CqrsModule,
+    TypeOrmModule.forFeature([<%= moduleName %>Entity]),
+    MongooseModule.forFeature([{ name: '<%= moduleName %>', schema: <%= moduleName %>Schema }]),
+  ],
+  controllers: [<%= moduleName %>Controller],
+  providers: [
+    Create<%= moduleName %>Handler,
+    Get<%= moduleName %>Handler,
+    <%= moduleName %>CreatedHandler,
+  ],
+})
+export class <%= moduleName %>Module {}

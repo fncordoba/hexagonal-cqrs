@@ -1,0 +1,15 @@
+---
+to: src/modules/<%= moduleName.toLowerCase() %>/queries/handlers/get-<%= moduleName.toLowerCase() %>.handler.ts
+---
+
+import { QueryHandler, IQueryHandler } from '@nestjs/cqrs';
+import { Get<%= moduleName %>Query } from '../get-<%= moduleName.toLowerCase() %>.query';
+
+@QueryHandler(Get<%= moduleName %>Query)
+export class Get<%= moduleName %>Handler implements IQueryHandler<Get<%= moduleName %>Query> {
+  async execute(query: Get<%= moduleName %>Query): Promise<any> {
+    console.log('Fetching <%= moduleName %>');
+    // Lógica para obtener un <%= moduleName %>
+    return [];
+  }
+}
